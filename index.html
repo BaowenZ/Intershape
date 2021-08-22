@@ -1,0 +1,264 @@
+<html>
+
+<head>
+    <link rel="StyleSheet" href="style.css" type="text/css" media="all">
+    <title>Interacting Two-Hand 3D Pose and Shape Reconstruction from Single Color Image</title>
+    <meta property="og:title" content="Interacting Two-Hand 3D Pose and Shape Reconstruction from Single Color Image">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+</head>
+<body>
+    <br>
+    <div class="center-div">
+        <span style="font-size:40px">Interacting Two-Hand 3D Pose and Shape Reconstruction from Single Color Image</span>
+    </div>
+
+    <br>
+    <table align="center" width="800px">
+        <tbody>
+            <tr>
+                <td align="center" width="150px">
+                    <div class="center-div">
+                        <span style="font-size:22px">Baowen Zhang</a></span>
+                    </div>
+                </td>
+
+                <td align="center" width="150px">
+                    <div class="center-div">
+                        <span style="font-size:22px"><a href="https://www.yangangwang.com/">Yangang Wang</a></span>
+                    </div>
+                </td>
+
+                <td align="center" width="150px">
+                    <div class="center-div">
+                        <span style="font-size:22px"><a href="http://www.idengxm.com/">Xiaoming Deng</a></span>
+                    </div>
+                </td>
+
+                <td align="center" width="150px">
+                    <div class="center-div">
+                        <span style="font-size:22px"><a href="https://www.zhangyinda.com/">Yinda Zhang</a></span>
+                    </div>
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+
+
+    <table align="center" width="800px">
+        <tbody>
+            <tr>
+                <td align="center" width="100px">
+                    <div class="center-div">
+                        <span style="font-size:22px"><a href="https://www2.cs.sfu.ca/~pingtan/">Ping Tan</a></span>
+                    </div>
+                </td>
+
+                <td align="center" width="100px">
+                    <div class="center-div">
+                        <span style="font-size:22px"><a href="#">Cuixia Ma</a></span>
+                    </div>
+                </td>
+
+                <td align="center" width="150px">
+                    <div class="center-div">
+                        <span style="font-size:22px"><a href="#">Hongan Wang</a></span>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+
+    <table align="center" width="1100px">
+        <tbody>
+            <tr>
+                <td align="center" width="100px">
+                    <div class="center-div">
+                        <span style="font-size:22px">Institute of Software, Chinese Academy of Sciences</span>
+                    </div>
+                </td>
+
+                <td align="center" width="100px">
+                    <div class="center-div">
+                        <span style="font-size:22px">University of Chinese Academy of Sciences</span>
+                    </div>
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+
+    <table align="center" width="900px">
+        <tbody>
+            <tr>
+                <td align="center" width="150px">
+                    <div class="center-div">
+                        <span style="font-size:22px">Southeast University</span>
+                    </div>
+                </td>
+
+                <td align="center" width="100px">
+                    <div class="center-div">
+                        <span style="font-size:22px">Google</span>
+                    </div>
+                </td>
+
+                <td align="center" width="150px">
+                    <div class="center-div">
+                        <span style="font-size:22px">Simon Fraser University</span>
+                    </div>
+                </td>
+
+                <td align="center" width="100px">
+                    <div class="center-div">
+                        <span style="font-size:22px">Alibaba</span>
+                    </div>
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+
+    <br>
+    <table align="center" width="600px">
+        <tbody>
+            <tr>
+                <td>
+                    <div class="center-div">
+                        <img src="./resources/images/fig1_webpage.png" width="1100px"></a><br>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="center-div">
+                        <span style="font-size:14px">We propose a novel deep learning architecture, which can estimate 3D hand pose as well as fine-grained hand shapes of the interacting hands from single color image.
+                        </span></div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <br><br>
+
+    <hr>
+    <div class="center-div">
+        <h1>Abstract</h1>
+    </div>
+    <p>
+        We propose a novel deep learning framework to reconstruct 3D hand poses and shapes of two interacting hands from a single color image. 
+        Previous methods designed for single hand cannot be easily applied for the two hand scenario because of the heavy inter-hand occlusion and larger solution space. 
+        In order to address the occlusion and similar appearance between hands that may confuse the network, we design a hand pose-aware attention module to extract features associated to each individual hand respectively. 
+        We then leverage the two hand context presented in interaction and propose a context-aware cascaded refinement that improves the hand pose and shape accuracy of each hand conditioned on the context between interacting hands. 
+        Extensive experiments on the main benchmark datasets demonstrate that our method predicts accurate 3D hand pose and shape from single color image, and achieves the state-of-the-art performance.
+    </p>
+    <br><br>
+
+    <hr>
+    <div class="center-div">
+        <h1 id="code">Network Architecture</h1>
+    </div>
+    <table align="center" width="1000px">
+        <tbody>
+            <tr>
+                <td>
+                    <div class="center-div">
+                        <img class="round" style="width:1000" src="./resources/images/architecture.png">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="center-div">
+                        <span style="font-size:14px">
+                            Our network first predict 2.5D heatmap for the joints of the two hands. 
+                            Then use three branches to recover MANO model parameters of each hand and the relative transformation of two hands. 
+                            Finally, refine the hand shape parameters jointly in a cascaded manner to respect the correlation context between the interacting hands.
+                        </span></div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <br><br>
+
+    <hr>
+    <div class="center-div">
+        <h1 id="paper">Paper, Code and Data</h1>
+    </div>
+    <table align="center" width="600px">
+
+        <tbody>
+            <tr>
+                <td>
+                    <img class="layered-paper-big" style="height:175px" src="./resources/images/page1.png">
+                </td>
+                <td>
+                    <span style="font-size:14pt">B. Zhang, Y. Wang, X. Deng., Y. Zhang, P. Tan, C. Ma, H. Wang</span>
+                    <br><br>
+                    <b><span style="display:inline-block;width:600px;font-size:14pt">Interacting Two-Hand 3D Pose and Shape Reconstruction from Single Color Image.</span></b>
+                    <br><br>
+                    <span style="font-size:14pt">ICCV, 2021.</span>
+                    <br><br>
+                    <span style="font-size:20px">
+                        <a>[arXiv]</a> &nbsp; &nbsp;
+                        <a>[Bibtex]</a> &nbsp; &nbsp; 
+                        <a>Codes coming soon</a> &nbsp; &nbsp;
+                    </span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <br><br>
+
+    <hr>
+    <div class="center-div">
+        <h1 id="code">Results</h1>
+    </div>
+    <div class="center-div">
+	    <table align="center" width="600px">
+	        <tbody>
+	            <tr>
+	                <td>
+	                    <div class="center-div">
+	                        <img src="./resources/images/comparison.png" width="1000px"></a><br>
+	                    </div>
+	                </td>
+	            </tr>
+	            <tr>
+	                <td>
+	                    <div class="center-div">
+	                        <span style="font-size:14px">Qualitative comparison of the interacting hand reconstruction with our method and the state-of-the-art single hand reconstruction methods.
+	                        </span></div>
+	                </td>
+	            </tr>
+	        </tbody>
+	    </table>
+    </div>
+    
+    <br><br>
+    <hr>
+    <table align="center" width="980px">
+        <tbody>
+            <tr>
+                <td>
+                    <left>
+                        <div class="center-div">
+                            <h1>Acknowledgements</h1>
+                        </div>
+                        <div class="center-div">
+                        This work was supported in part by National Natural Science Foundation of China (No. 62076061, No. 61473276, No. 61872346), Beijing Natural Science Foundation (4212029, L182052), and Newton Prize 2019 China Award (NP2PB/100047).
+                        The websiteis modified from this <a href="https://yqdch.github.io/DHSP3D/">template</a>.
+                        </div>
+                    </left>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+
+
+
+</body>
+
+</html>
