@@ -1,0 +1,6 @@
+@inproceedings{Zhang2021twohand, 
+      title={Interacting Two-Hand 3D Pose and Shape Reconstruction from Single Color Image}, 
+      author={Baowen Zhang, Yangang Wang, Xiaoming Deng, Yinda Zhang, Ping Tan, Cuixia Ma and Hongan Wang}, 
+      booktitle={International Conference on Computer Vision (ICCV)}, 
+      year={2021} 
+} 
